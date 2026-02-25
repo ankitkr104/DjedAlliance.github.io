@@ -27,27 +27,41 @@ const Header: React.FC = () => {
 	}
 
 	return (
-		<nav className="fixed w-full top-0 hover:bg-stone-900/90 lg:bg-transparent bg-stone-900/90 border-gray-200 z-50" aria-label="Main navigation">
-			<div className="flex flex-wrap items-center justify-between mx-auto p-4">
-				<a href="#home" onClick={(e) => { e.preventDefault(); handleActive('homeLink', '#'); }} aria-label="Djed Alliance - Go to home">
-					<span className="text-2xl font-extrabold navColor"><img src={Logo} className="w-12 ml-6" alt="Djed Alliance logo" /></span>
+		<nav className="navbar-glass" aria-label="Main navigation">
+			<div className="navbar-container">
+				<a href="#home" onClick={(e) => { e.preventDefault(); handleActive('homeLink', '#'); }} className="navbar-logo" aria-label="Djed Alliance - Go to home">
+					<img src={Logo} alt="Djed Alliance logo" />
 				</a>
-				<button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded={isOpen} onClick={toggleMenu}>
+				<button 
+					type="button" 
+					className="navbar-toggle" 
+					aria-controls="navbar-default" 
+					aria-expanded={isOpen} 
+					onClick={toggleMenu}
+				>
 					<span className="sr-only">Open main menu</span>
-					<svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
+					<svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+						<path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path>
+					</svg>
 				</button>
-				<div className={`${!isOpen ? 'hidden' : 'block'} w-full md:block md:w-auto`} id="navbar-default">
-					<ul className={`${!isOpen ? 'hidden' : 'flex-col'} lg:space-y-0 md:inline-flex mr-6 align-middle justify-center items-center lg:inline-flex`}>
-						<li><a id="homeLink" href="#home" className="active px-4 md:py-2 font-semibold navColor cursor-pointer" onClick={(e) => { e.preventDefault(); handleActive('homeLink', '#'); }}>HOME</a></li>
-						<li><a id="appsLink" href="#djed_apps" className="px-4 md:py-2 font-semibold navColor cursor-pointer" onClick={(e) => { e.preventDefault(); handleActive('appsLink', 'djed_apps'); }}>DJED</a></li>
-						<li><a id="contributorsLink" href="#contributors" className="px-4 md:py-2 font-semibold navColor cursor-pointer" onClick={(e) => { e.preventDefault(); handleActive('contributorsLink', 'contributors'); }}>CONTRIBUTORS</a></li>
-						<li><a href="https://docs.stability.nexus/about-us/the-djed-alliance" target="_blank" rel="noreferrer" className="px-4 md:py-2 font-semibold navColor">DOCS</a></li>
-						<li><a href="https://medium.com/djed-alliance" target="_blank" rel="noreferrer" className="px-4 md:py-2 font-semibold navColor">BLOG</a></li>
+				<div className={`navbar-menu ${isOpen ? 'navbar-menu-open' : ''}`} id="navbar-default">
+					<ul className="navbar-links">
+						<li><a id="homeLink" href="#home" className="navbar-link active" onClick={(e) => { e.preventDefault(); handleActive('homeLink', '#'); }}>HOME</a></li>
+						<li><a id="appsLink" href="#djed_apps" className="navbar-link" onClick={(e) => { e.preventDefault(); handleActive('appsLink', 'djed_apps'); }}>DJED</a></li>
+						<li><a id="contributorsLink" href="#contributors" className="navbar-link" onClick={(e) => { e.preventDefault(); handleActive('contributorsLink', 'contributors'); }}>CONTRIBUTORS</a></li>
+						<li><a href="https://docs.stability.nexus/about-us/the-djed-alliance" target="_blank" rel="noreferrer" className="navbar-link">DOCS</a></li>
+						<li><a href="https://medium.com/djed-alliance" target="_blank" rel="noreferrer" className="navbar-link">BLOG</a></li>
 					</ul>
-					<div className="flex justify-center lg:inline-flex">
-						<a href="https://discord.gg/YzDKeEfWtS" target="_blank" rel="noreferrer" aria-label="Join Djed Alliance on Discord"><img className="socialImage mx-2 cursor-pointer" src={Discord} alt="Discord" /></a>
-						<a href="https://github.com/DjedAlliance" target="_blank" rel="noreferrer" aria-label="Djed Alliance GitHub"><img className="socialImage mx-2 cursor-pointer" src={GitHub} alt="GitHub" /></a>
-						<a href="https://twitter.com/DjedAlliance" target="_blank" rel="noreferrer" aria-label="Follow Djed Alliance on X (Twitter)"><img className="socialImage mx-2 cursor-pointer" src={Twitter} alt="X (Twitter)" /></a>
+					<div className="navbar-social">
+						<a href="https://discord.gg/YzDKeEfWtS" target="_blank" rel="noreferrer" aria-label="Join Djed Alliance on Discord">
+							<img src={Discord} alt="Discord" />
+						</a>
+						<a href="https://github.com/DjedAlliance" target="_blank" rel="noreferrer" aria-label="Djed Alliance GitHub">
+							<img src={GitHub} alt="GitHub" />
+						</a>
+						<a href="https://twitter.com/DjedAlliance" target="_blank" rel="noreferrer" aria-label="Follow Djed Alliance on X (Twitter)">
+							<img src={Twitter} alt="X (Twitter)" />
+						</a>
 					</div>
 				</div>
 			</div>

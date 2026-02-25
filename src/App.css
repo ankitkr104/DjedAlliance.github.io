@@ -105,6 +105,207 @@
   border-bottom: 2px solid rgba(243, 193, 129, 1);
 }
 
+/* Glassy Navbar Styles */
+.navbar-glass {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: rgba(21, 21, 21, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(243, 193, 129, 0.1);
+  transition: all 0.3s ease;
+}
+
+.navbar-glass:hover {
+  background: rgba(21, 21, 21, 0.85);
+  border-bottom: 1px solid rgba(243, 193, 129, 0.2);
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
+}
+
+.navbar-logo img {
+  width: 48px;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(243, 193, 129, 0.3));
+}
+
+.navbar-toggle {
+  display: none;
+  padding: 0.5rem;
+  color: rgba(243, 193, 129, 1);
+  background: rgba(243, 193, 129, 0.1);
+  border: 1px solid rgba(243, 193, 129, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggle:hover {
+  background: rgba(243, 193, 129, 0.2);
+  border-color: rgba(243, 193, 129, 0.4);
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-link {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: rgba(243, 193, 129, 1);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.navbar-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: rgba(243, 193, 129, 1);
+  transition: width 0.3s ease;
+}
+
+.navbar-link:hover {
+  background: rgba(243, 193, 129, 0.1);
+  color: rgba(243, 193, 129, 1);
+}
+
+.navbar-link:hover::before {
+  width: 80%;
+}
+
+.navbar-link.active {
+  background: rgba(243, 193, 129, 0.15);
+  border-bottom: 2px solid rgba(243, 193, 129, 1);
+}
+
+.navbar-social {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 2rem;
+  border-left: 1px solid rgba(243, 193, 129, 0.2);
+}
+
+.navbar-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0.5rem;
+  background: rgba(243, 193, 129, 0.1);
+  border: 1px solid rgba(243, 193, 129, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.navbar-social a:hover {
+  background: rgba(243, 193, 129, 0.2);
+  border-color: rgba(243, 193, 129, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(243, 193, 129, 0.3);
+}
+
+.navbar-social img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+  .navbar-toggle {
+    display: flex;
+  }
+
+  .navbar-menu {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(21, 21, 21, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(243, 193, 129, 0.2);
+    padding: 2rem;
+    gap: 2rem;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-menu-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .navbar-link {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .navbar-social {
+    border-left: none;
+    border-top: 1px solid rgba(243, 193, 129, 0.2);
+    padding-left: 0;
+    padding-top: 1.5rem;
+    justify-content: center;
+  }
+}
+
+
 .dappsTitle {
   font-family: 'Space Mono';
   font-style: normal;
